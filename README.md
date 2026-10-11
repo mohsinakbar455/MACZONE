@@ -2,7 +2,7 @@
 
 MACZONE (Mac Zone) is an open-source, native macOS window manager for arranging app windows in custom zones. Design layouts visually, snap windows by dragging or keyboard shortcut, and keep different setups for your displays and Spaces. It runs from the menu bar.
 
-[Download the macOS preview DMG](https://github.com/mohsinakbar455/MACZONE/releases/latest) · [Download the Alfred workflow](alfred/MACZONE%20Layouts.alfredworkflow) · [View the source](Sources/MACZONE)
+[Download the macOS preview DMG](https://github.com/mohsinakbar455/MACZONE/releases/tag/v0.1.0) · [Download the Alfred workflow](alfred/MACZONE%20Layouts.alfredworkflow) · [View the source](Sources/MACZONE)
 
 ![MACZONE layout editor with two editable window zones](media/screenshots/layout-editor.png)
 
@@ -22,7 +22,7 @@ MACZONE (Mac Zone) is an open-source, native macOS window manager for arranging 
 
 **Requirements:** Apple Silicon Mac, macOS 26 or later. MACZONE is a menu-bar app, so it does not appear in the Dock. Moving other apps' windows requires macOS Accessibility permission (called **Device Control and Data Access** on macOS 27).
 
-1. Download the DMG from the [latest GitHub release](https://github.com/mohsinakbar455/MACZONE/releases/latest).
+1. Download the DMG from the [v0.1.0 preview release](https://github.com/mohsinakbar455/MACZONE/releases/tag/v0.1.0).
 2. Open the DMG and drag **MACZONE.app** to **Applications**.
 3. Open MACZONE from Applications. Grant its requested window-control permission in System Settings. Its menu-bar icon opens the layout grid and settings.
 
