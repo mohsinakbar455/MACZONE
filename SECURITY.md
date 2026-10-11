@@ -1,11 +1,5 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+MACZONE is a preview release. If you find a security issue, please avoid posting exploit details in a public issue. Use GitHub's **Report a vulnerability** option under this repository's Security tab to send a private report to the maintainer.
 
-MacsyZones 1.6 and higher have auto-update feature.
-
-## Reporting a Vulnerability
-
-To report a vulnerability, open a pr on [GitHub Issues](https://github.com/rohanrhu/MacsyZones/issues).
-
-You an also join our [MacsyZones Discord](https://discord.gg/C4axTA6rpn) community.
+The app manages windows through macOS accessibility APIs and stores its layout library locally at `~/Library/Application Support/MACZONE/library.json`. The Alfred workflow sends commands to the installed app through the local `maczone://` URL scheme.

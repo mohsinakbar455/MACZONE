@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleExecutable</key><string>MACZONE</string>
+<key>CFBundleName</key><string>MACZONE</string>
+<key>CFBundleDisplayName</key><string>MACZONE</string>
+<key>CFBundleIdentifier</key><string>com.appfoundry.maczone</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleShortVersionString</key><string>0.1.0</string>
+<key>CFBundleVersion</key><string>2</string>
+<key>CFBundleURLTypes</key><array><dict>
+<key>CFBundleURLName</key><string>com.appfoundry.maczone.automation</string>
+<key>CFBundleURLSchemes</key><array><string>maczone</string></array>
+<key>CFBundleTypeRole</key><string>Editor</string>
+</dict></array>
+<key>CFBundleIconFile</key><string>MACZONEYellow</string>
+<key>LSMinimumSystemVersion</key><string>26.0</string>
+<key>LSUIElement</key><true/>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSPrincipalClass</key><string>NSApplication</string>
+<key>NSHumanReadableCopyright</key><string>MACZONE. Based on MacsyZones © 2024 Oğuzhan Eroğlu. GPL-3.0.</string>
+</dict></plist>

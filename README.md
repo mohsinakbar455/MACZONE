@@ -1,80 +1,70 @@
-# MacsyZones
+# MACZONE — visual window layouts for macOS
 
-[![GitHub release](https://img.shields.io/github/release/rohanrhu/MacsyZones.svg?style=flat-square&color=informational)](https://github.com/rohanrhu/MacsyZones/releases)
-[![GitHub stars](https://img.shields.io/github/stars/rohanrhu/MacsyZones?style=flat-square)](https://github.com/rohanrhu/MacsyZones/stargazers)
-[![Support me on Patreon](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3DEvrenselKisilik%26type%3Dpatrons&style=flat-square)](https://patreon.com/EvrenselKisilik)
-[![MacsyZones Discord](https://img.shields.io/discord/1293725442238447737.svg?color=7289da&label=Discord&logo=discord&style=flat-square)](https://discord.gg/C4axTA6rpn)
+MACZONE (Mac Zone) is an open-source, native macOS window manager for arranging app windows in custom zones. Design layouts visually, snap windows by dragging or keyboard shortcut, and keep different setups for your displays and Spaces. It runs from the menu bar.
 
-Make your workflow more efficient with MacsyZones. Organize your windows with ease.
+[Download the macOS preview DMG](https://github.com/mohsinakbar455/MACZONE/releases/latest) · [Download the Alfred workflow](alfred/MACZONE%20Layouts.alfredworkflow) · [View the source](Sources/MACZONE)
 
-Visit [https://macsyzones.com](https://macsyzones.com) to download MacsyZones.
+![MACZONE layout editor with two editable window zones](media/screenshots/layout-editor.png)
 
-| ![MacsyZones](media/MacsyZonesAppIcon.png) | MacsyZones is a FancyZones equivalent for macOS. MacsyZones allows you to create layouts and sections in your layouts as you want and fit your windows into sections with ease. |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+## What you can do
 
-<img width="1728" height="1760" alt="MacsyZones Settings" src="https://github.com/user-attachments/assets/54385d2e-7d97-4d85-8aab-a9681cea8b70" />
+- **Create layouts visually.** Add, resize, duplicate, and name zones; import or export layouts as JSON.
+- **Snap and arrange windows.** Drag to zones, use a grid from the menu bar, or assign shortcuts for zones, fractions, displays, and layout cycling.
+- **Remember your workspace.** Assign layouts per display or Space, save window sessions, and set per-app rules for new windows.
+- **Adjust neighboring windows.** Drag a shared divider to resize or use its menu to swap windows.
+- **Use Alfred.** Select any of six assigned layout slots or cycle them with the included workflow.
 
-## MacsyZones in action
+| Layout shortcuts | App rules |
+| --- | --- |
+| ![Six layout slots and shortcut controls in MACZONE](media/screenshots/layout-shortcuts.png) | ![App-specific display, layout, and zone placement rule](media/screenshots/app-rules.png) |
 
-https://github.com/user-attachments/assets/f197dfa9-ef54-4a7d-b6af-630a0f0d2cac
+## Download and install
 
-https://github.com/user-attachments/assets/101d3296-889f-4cfb-93cf-87bad548a108
+**Requirements:** Apple Silicon Mac, macOS 26 or later. MACZONE is a menu-bar app, so it does not appear in the Dock. Moving other apps' windows requires macOS Accessibility permission (called **Device Control and Data Access** on macOS 27).
 
-### Install with Homebrew
+1. Download the DMG from the [latest GitHub release](https://github.com/mohsinakbar455/MACZONE/releases/latest).
+2. Open the DMG and drag **MACZONE.app** to **Applications**.
+3. Open MACZONE from Applications. Grant its requested window-control permission in System Settings. Its menu-bar icon opens the layout grid and settings.
 
-You can install MacsyZones via [Homebrew](https://brew.sh):
+**Preview build notice:** The downloadable DMG is ad-hoc signed because this project does not yet have a Developer ID certificate or Apple notarization. macOS Gatekeeper may prevent it from opening normally. In System Settings → Privacy & Security, use **Open Anyway** for MACZONE after your first launch attempt, then confirm you want to open it. Do not disable Gatekeeper globally. The [source build](#build-from-source) is also available. A Developer ID signed, notarized release is planned.
+
+This app is still a preview. It has no automatic updater, license server, checkout, or Intel build. It cannot control true full-screen windows, docked internal panels, or windows that an app does not expose as movable and resizable.
+
+## Alfred workflow
+
+Install MACZONE in `/Applications` first, then download and double-click [MACZONE Layouts.alfredworkflow](alfred/MACZONE%20Layouts.alfredworkflow). Alfred's Powerpack is required for workflows.
+
+| Alfred command | Action |
+| --- | --- |
+| `mzcycle` | Cycle through assigned layout slots |
+| `mzlayout 1` … `mzlayout 6` | Select a layout slot |
+| `mzsettings` | Open MACZONE shortcut settings |
+| Control–Option–L | Default workflow hotkey for cycling |
+
+Assign your layouts in **MACZONE → Shortcuts → Layout Shortcuts**. If Alfred owns Control–Option–L, clear the same binding inside MACZONE to avoid a shortcut conflict. The workflow uses MACZONE's `maczone://` URL commands and includes its script in the downloadable file. It does not simulate key presses.
+
+## Common questions
+
+**Is MACZONE free?** Yes. MACZONE is open source under GPL-3.0, with source and downloadable previews on GitHub.
+
+**Can I use it without Alfred?** Yes. All window management features work in the MACZONE app. The Alfred workflow is an optional shortcut to its layout commands.
+
+**Does it work on Intel Macs?** The current preview is Apple Silicon only. It requires macOS 26 or later.
+
+## Build from source
+
+Requires Apple command-line tools with a macOS 26+ SDK. This build targets Apple Silicon.
 
 ```sh
-brew install --cask macsyzones
+bash scripts/build.sh
+open build/MACZONE.app
+bash scripts/test.sh
 ```
 
-## Buy to support me
+To make a DMG locally: `bash scripts/package-dmg.sh`. A distribution build needs your own Developer ID signing identity and notarization; the default build is ad-hoc signed for development. App data is stored at `~/Library/Application Support/MACZONE/library.json`.
 
-You can buy MacsyZones Pro (the same MacsyZones just "Pro") to support me.
+## About and license
 
-Visit [MacsyZones website](https://macsyzones.com) to buy.
+MACZONE is GPL-3.0 licensed and based on [MacsyZones](https://github.com/rohanrhu/MacsyZones) by Oğuzhan Eroğlu. The original project readme is preserved in [docs/UPSTREAM_README.md](docs/UPSTREAM_README.md). Window drag handling also adapts [TilingGlass](https://github.com/gitpcl/tilingglass); see [its notice](Resources/TilingGlass-NOTICE.txt). Bundled Lucide icons retain their license notices in `Resources/Lucide`.
 
-## Buy QuakeNotch to support me
-
-You can try my other app QuakeNotch too. It is a Agentic AI Quake Terminal app and more.
-
-Visit [QuakeNotch website](https://quakenotch.com) to buy.
-
-## Donations ❤️
-
-You love [MacsyZones](https://macsyzones.com)? You can support the development by making a donation. You have the following options to donate:
-
-- [Patreon](https://www.patreon.com/evrenselkisilik)
-- [GitHub Sponsors](https://github.com/sponsors/rohanrhu)
-
-### Cryptocurrency Donations
-
-| Currency          | Address                                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------------------- |
-| BTC               | 1A3NkkFEMFc2wq74GGRXdzrsEn42Ts1ajm                                                              |
-| ETH / USDT / USDC | 0xDDD5e5029F4d1CA54461abCF558Cb6dcAD6Df3CB                                                      |
-| XMR               | 88qvS4sfUnLZ7nehFrz3PG1pWovvEgprcUhkmVLaiL8PVAFgfHjspjKPLhWLj3DUcm92rwNQENbJ1ZbvESdukWvh3epBUty |
-
-Preferably, donating USDT or USDC is recommended but you can donate any of the above currencies. 🥳
-
-## Discord
-
-You can join [MacsyZones Discord server](https://discord.gg/C4axTA6rpn).
-
-## Contributing
-
-We welcome contributions to MacsyZones. Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
-
-## Code of Conduct
-
-We have adopted a Code of Conduct that we expect project participants to adhere to. Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
-
-## License
-
-Copyright (C) 2024, Oğuzhan Eroğlu <rohanrhu2@gmail.com> ([https://meowingcat.io/](https://meowingcat.io/))
-
-GNU General Public License v3 (GPL-3)
-
-You may copy, distribute and modify the software as long as you track changes/dates in source files. Any modifications to or software including (via compiler) GPL-licensed code must also be made available under the GPL along with build & install instructions.
-
-See [LICENSE](LICENSE) for more information.
+Issues and feature requests are welcome in [GitHub Issues](https://github.com/mohsinakbar455/MACZONE/issues). See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) before contributing or reporting a vulnerability.

@@ -1,34 +1,7 @@
-# Contribute to MacsyZones
+# Contributing to MACZONE
 
-We welcome contributions to MacsyZones. It is better to follow this quick guide to get started with contributing to MacsyZones.
+Issues, reproducible bug reports, and pull requests are welcome. For code changes, build the native MACZONE target with `bash scripts/build.sh` and run `bash scripts/test.sh` before opening a pull request. Include the macOS version, Mac model, and steps to reproduce when reporting window-management problems.
 
-## How to Contribute?
+The original MacsyZones Xcode project remains in the repository for attribution and reference. MACZONE's current source is in `Sources/MACZONE`, and its build entry point is `scripts/build.sh`.
 
-A contribution process is simple. You can follow the steps below to contribute to MacsyZones.
-
-1. Fork the repository.
-2. Clone the forked repository.
-3. Create a new branch.
-4. Make your changes.
-5. Commit your changes.
-6. Push your changes.
-7. Create a pull request.
-8. Wait for the review.
-9. Make changes if requested.
-10. Get your pull request merged.
-11. Celebrate 🎉
-
-## Code Style
-
-Cat recommends using some code style rules to keep the codebase clean and consistent. You can use the following tools to enforce code style rules:
-
-* Always test your branch with all use cases.
-* Follow the current code style and conventions.
-
-## Code of Conduct
-
-Please read the [Code of Conduct](CODE_OF_CONDUCT.md) before contributing to MacsyZones.
-
-## License
-
-MacsyZones is licensed under the [MIT License](LICENSE).
+MACZONE is distributed under GPL-3.0. Preserve upstream copyright and license notices when adapting code or assets. See [LICENSE](LICENSE) and [Resources/TilingGlass-NOTICE.txt](Resources/TilingGlass-NOTICE.txt).

@@ -14,6 +14,9 @@ import Carbon
 import Cocoa
 import OSLog
 
+// MACZONE adaptation, 2026-10-08: isolate registration signature and clear stale
+// references when shortcuts are reconfigured. Original GPL-3 notices retained.
+
 class GlobalHotkey: Identifiable, Equatable {
     static var handler: EventHandlerUPP = { _, eventRef, _ in
         var eventHotkeyId = EventHotKeyID()
@@ -47,7 +50,11 @@ class GlobalHotkey: Identifiable, Equatable {
     
     @MainActor
     static func setup() {
-        let status = InstallEventHandler(GetEventDispatcherTarget(),
+        // AppKit routes hot-key notifications through the application target.
+        // Installing on the dispatcher can register successfully yet never
+        // receive the event on macOS 27. Registration below still uses the
+        // dispatcher so the shortcut remains global.
+        let status = InstallEventHandler(GetApplicationEventTarget(),
                                          Self.handler,
                                          1,
                                          [EventTypeSpec(eventClass: OSType(kEventClassKeyboard),
@@ -67,7 +74,7 @@ class GlobalHotkey: Identifiable, Equatable {
     
     @MainActor var hotKeyRef: EventHotKeyRef?
     
-    let hotkeyType = "MYZS".utf8.reduce(0) { ($0 << 8) | UInt32($1) }
+    let hotkeyType = "MCZN".utf8.reduce(0) { ($0 << 8) | UInt32($1) }
     
     var hotkeyId: UInt32
     var eventHotkeyId: EventHotKeyID?
@@ -146,10 +153,11 @@ class GlobalHotkey: Identifiable, Equatable {
         if let hotKeyRef {
             let status = UnregisterEventHotKey(hotKeyRef)
             debugLog("Unregistered hotkey with status: \(status)")
-            Self.hotkeys.removeValue(forKey: id)
+            self.hotKeyRef = nil
         } else {
             debugLog("No hotkey to unregister")
         }
+        Self.hotkeys.removeValue(forKey: id)
     }
 
     @MainActor
@@ -220,33 +228,42 @@ class GlobalHotkey: Identifiable, Equatable {
         return (modifiers, keyCode, key)
     }
 
+    // Recording and registration use the same physical-key names. AppKit's
+    // charactersIgnoringModifiers still includes Shift (2 becomes @, = becomes
+    // +), so it cannot be used as the persisted key alongside a Shift modifier.
+    static func keyName(for keyCode: UInt16) -> String? {
+        let special: [UInt16: String] = [123: "Left", 124: "Right", 125: "Down", 126: "Up",
+            51: "Delete", 49: "Space", 36: "Return", 48: "Tab", 53: "Escape"]
+        return special[keyCode] ?? characterKeyCodes.first(where: { $0.value == keyCode }).map { String($0.key).uppercased() }
+    }
+
+    private static let characterKeyCodes: [Character: UInt16] = [
+        "1": 18, "2": 19, "3": 20, "4": 21, "5": 23,
+        "6": 22, "7": 26, "8": 28, "9": 25, "0": 29,
+
+        "q": 12, "w": 13, "e": 14, "r": 15, "t": 17,
+        "y": 16, "u": 32, "i": 34, "o": 31, "p": 35,
+
+        "a": 0, "s": 1, "d": 2, "f": 3, "g": 5,
+        "h": 4, "j": 38, "k": 40, "l": 37,
+
+        "z": 6, "x": 7, "c": 8, "v": 9, "b": 11,
+        "n": 45, "m": 46,
+
+        "-": 27, "=": 24,
+        "[": 33, "]": 30,
+        "\\": 42, ";": 41, "'": 39,
+        ",": 43, ".": 47, "/": 44,
+        "`": 50
+    ]
+
     static func keyCodeForCharacter(_ character: String) -> UInt16? {
         guard let char = character.lowercased().first else { return nil }
-        
-        let keyMap: [Character: UInt16] = [
-            "1": 18, "2": 19, "3": 20, "4": 21, "5": 23,
-            "6": 22, "7": 26, "8": 28, "9": 25, "0": 29,
-            
-            "q": 12, "w": 13, "e": 14, "r": 15, "t": 17,
-            "y": 16, "u": 32, "i": 34, "o": 31, "p": 35,
-            
-            "a": 0, "s": 1, "d": 2, "f": 3, "g": 5,
-            "h": 4, "j": 38, "k": 40, "l": 37,
-            
-            "z": 6, "x": 7, "c": 8, "v": 9, "b": 11,
-            "n": 45, "m": 46,
-            
-            "-": 27, "=": 24,
-            "[": 33, "]": 30,
-            "\\": 42, ";": 41, "'": 39,
-            ",": 43, ".": 47, "/": 44,
-            "`": 50
-        ]
-        
-        if let keyCode = keyMap[char] {
+
+        if let keyCode = characterKeyCodes[char] {
             return keyCode
         }
-        
+
         return keyCodeForCharacterDynamic(char)
     }
 

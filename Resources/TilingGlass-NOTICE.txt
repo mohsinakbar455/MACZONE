@@ -1,0 +1,28 @@
+TilingGlass attribution
+
+Project: TilingGlass by gitpcl and contributors
+Source: https://github.com/gitpcl/tilingglass
+Revision: 3a89347cc1aa2a6aa6e4e57ad2b8e30d900efdab
+License: GPL-3.0-only (SPDX identifier retained from upstream files).
+The GPL version 3 license is included in this app's LICENSE resource.
+
+MACZONE's 2026-10-08 drag repair adapts concepts and implementation from:
+  TilingGlass/Input/DragMonitor.swift
+  TilingGlass/Input/DragCoordinator.swift
+  TilingGlass/WindowDriver/AccessibilityElement.swift
+  Packages/TilingCore/Sources/TilingCore/ZoneHitTesting.swift
+
+Affected MACZONE files:
+  Sources/MACZONE/DragState.swift
+  Sources/MACZONE/WindowEngine.swift
+
+Adaptations include window-at-pointer AX lookup, permission-aware input
+monitoring, modifier-change re-evaluation during a drag, confirmed window
+movement, inclusive hit testing, and anchor-to-hover rectangular spanning.
+MACZONE retains its own layouts, display/Space bindings, preferences, overlay,
+edge-snapping behavior, and window-moving implementation. Drop handling also
+re-evaluates the final pointer and modifiers. The deterministic tests exercise
+the same WindowDragState used by the native event driver.
+
+The reference project is not bundled as a separate application or dependency.
+No TilingGlass installation, startup registration, or settings are modified.
