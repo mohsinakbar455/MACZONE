@@ -2,7 +2,7 @@
 
 MACZONE (Mac Zone) is an open-source, native macOS window manager for arranging app windows in custom zones. Design layouts visually, snap windows by dragging or keyboard shortcut, and keep different setups for your displays and Spaces. It runs from the menu bar.
 
-[Download the macOS preview DMG](https://github.com/mohsinakbar455/MACZONE/releases/tag/v0.1.0) · [Download the Alfred workflow](alfred/MACZONE%20Layouts.alfredworkflow) · [View the source](Sources/MACZONE)
+[Download the macOS preview DMG](https://github.com/mohsinakbar455/MACZONE/releases/tag/v0.1.0) · [Download the Alfred workflow](https://github.com/mohsinakbar455/MACZONE/releases/download/v0.1.0/MACZONE.Layouts.alfredworkflow) · [View the source](Sources/MACZONE)
 
 ![MACZONE layout editor with two editable window zones](media/screenshots/layout-editor.png)
 
@@ -32,7 +32,7 @@ This app is still a preview. It has no automatic updater, license server, checko
 
 ## Alfred workflow
 
-Install MACZONE in `/Applications` first, then download and double-click [MACZONE Layouts.alfredworkflow](alfred/MACZONE%20Layouts.alfredworkflow). Alfred's Powerpack is required for workflows.
+Install MACZONE in `/Applications` first, then download and double-click [MACZONE Layouts.alfredworkflow](https://github.com/mohsinakbar455/MACZONE/releases/download/v0.1.0/MACZONE.Layouts.alfredworkflow). Alfred's Powerpack is required for workflows.
 
 | Alfred command | Action |
 | --- | --- |
@@ -41,7 +41,7 @@ Install MACZONE in `/Applications` first, then download and double-click [MACZON
 | `mzsettings` | Open MACZONE shortcut settings |
 | Control–Option–L | Default workflow hotkey for cycling |
 
-Assign your layouts in **MACZONE → Shortcuts → Layout Shortcuts**. If Alfred owns Control–Option–L, clear the same binding inside MACZONE to avoid a shortcut conflict. The workflow uses MACZONE's `maczone://` URL commands and includes its script in the downloadable file. It does not simulate key presses.
+Assign your layouts in **MACZONE → Shortcuts → Layout Shortcuts**. If Alfred owns Control–Option–L, clear the same binding inside MACZONE to avoid a shortcut conflict. The [workflow source package](alfred/MACZONE%20Layouts.alfredworkflow) is also stored in this repository. The workflow uses MACZONE's `maczone://` URL commands and includes its script in the downloadable file. It does not simulate key presses.
 
 ## Common questions
 

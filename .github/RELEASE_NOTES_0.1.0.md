@@ -5,7 +5,7 @@ Native, open-source window layouts for Apple Silicon Macs running macOS 26 or la
 ## Downloads
 
 - **MACZONE-0.1.0-arm64-preview.dmg** — drag MACZONE.app into Applications.
-- **MACZONE Layouts.alfredworkflow** — optional Alfred Powerpack workflow for cycling and selecting six layout slots. Install MACZONE in Applications first.
+- **MACZONE.Layouts.alfredworkflow** — optional Alfred Powerpack workflow for cycling and selecting six layout slots. Install MACZONE in Applications first.
 
 ## Highlights
 
@@ -24,5 +24,5 @@ The app and workflow source are available in this repository under GPL-3.0. A De
 
 ```text
 c0b9ed72bd5194cabdc1a928f361b627a8d6e43baa41263ab3f19f04eb777fd1  MACZONE-0.1.0-arm64-preview.dmg
-100431a69d480b6a0f63341e9c0468a6c4c35149f947faab9c1d5fbc5c586ed1  MACZONE Layouts.alfredworkflow
+100431a69d480b6a0f63341e9c0468a6c4c35149f947faab9c1d5fbc5c586ed1  MACZONE.Layouts.alfredworkflow
 ```
