@@ -24,10 +24,10 @@ build/tests/window-swap-tests
 swiftc -swift-version 5 -module-cache-path build/module-cache Sources/MACZONE/Models.swift Tests/LayoutShortcutRuleTests.swift -o build/tests/layout-shortcut-rule-tests
 build/tests/layout-shortcut-rule-tests
 
-swiftc -swift-version 5 -module-cache-path build/module-cache MacsyZones/HotKey.swift Sources/MACZONE/ShortcutRecorder.swift Tests/ShortcutRecordingTests.swift -o build/tests/shortcut-recording-tests
+swiftc -swift-version 5 -module-cache-path build/module-cache Sources/MACZONE/GlobalHotkey.swift Sources/MACZONE/ShortcutRecorder.swift Tests/ShortcutRecordingTests.swift -o build/tests/shortcut-recording-tests
 build/tests/shortcut-recording-tests
 
-swiftc -swift-version 5 -module-cache-path build/module-cache MacsyZones/HotKey.swift Sources/MACZONE/Models.swift Tests/HotkeyDeliveryTests.swift -o build/tests/hotkey-delivery-tests
+swiftc -swift-version 5 -module-cache-path build/module-cache Sources/MACZONE/GlobalHotkey.swift Sources/MACZONE/Models.swift Tests/HotkeyDeliveryTests.swift -o build/tests/hotkey-delivery-tests
 build/tests/hotkey-delivery-tests
 
 swiftc -swift-version 5 -module-cache-path build/module-cache Sources/MACZONE/AutomationCommand.swift Tests/AutomationCommandTests.swift -o build/tests/automation-command-tests

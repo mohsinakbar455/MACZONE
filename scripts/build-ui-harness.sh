@@ -16,6 +16,6 @@ swiftc -swift-version 5 -D MACZONE_UI_QA -target arm64-apple-macosx26.0 \
   -module-cache-path build/module-cache \
   -import-objc-header Sources/MACZONE/Bridge.h \
   -framework Cocoa -framework SwiftUI -framework Carbon -framework ApplicationServices \
-  MacsyZones/HotKey.swift Sources/MACZONE/*.swift -o "$qa_path/Contents/MacOS/MACZONE"
+  Sources/MACZONE/*.swift -o "$qa_path/Contents/MacOS/MACZONE"
 codesign --force --sign - "$qa_path"
 printf 'Built isolated UI fixture: %s\n' "$qa_path"

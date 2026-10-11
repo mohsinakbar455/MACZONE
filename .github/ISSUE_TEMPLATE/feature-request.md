@@ -1,16 +1,11 @@
 ---
-name: Feature Request
-about: Send a feature request for MacsyZones
+name: Feature request
+about: Suggest an improvement to MACZONE
 title: ''
-labels: feature request
+labels: enhancement
 assignees: ''
-
 ---
 
-**What feature would you like to see?**
+**What would you like MACZONE to do?**
 
-Explain your feature request...
-
-**Examples (if available)**
-
-Note examples if available...
+**How would you use it?**

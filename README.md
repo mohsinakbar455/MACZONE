@@ -65,6 +65,6 @@ To make a DMG locally: `bash scripts/package-dmg.sh`. A distribution build needs
 
 ## About and license
 
-MACZONE is GPL-3.0 licensed and based on [MacsyZones](https://github.com/rohanrhu/MacsyZones) by Oğuzhan Eroğlu. The original project readme is preserved in [docs/UPSTREAM_README.md](docs/UPSTREAM_README.md). Window drag handling also adapts [TilingGlass](https://github.com/gitpcl/tilingglass); see [its notice](Resources/TilingGlass-NOTICE.txt). Bundled Lucide icons retain their license notices in `Resources/Lucide`.
+MACZONE is distributed under [GPL-3.0](LICENSE). Source-level copyright notices and bundled third-party license notices are retained in the files to which they apply.
 
 Issues and feature requests are welcome in [GitHub Issues](https://github.com/mohsinakbar455/MACZONE/issues). See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) before contributing or reporting a vulnerability.

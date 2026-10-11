@@ -1,10 +1,9 @@
 ---
-name: Other Issue
-about: Tell us about your issue?
+name: Other issue
+about: Ask about MACZONE or report another issue
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
-
+**Details**

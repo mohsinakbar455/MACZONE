@@ -14,7 +14,7 @@ swiftc -swift-version 5 -O -g -target arm64-apple-macosx26.0 \
   -module-cache-path build/module-cache \
   -import-objc-header Sources/MACZONE/Bridge.h \
   -framework Cocoa -framework SwiftUI -framework Carbon -framework ApplicationServices \
-  MacsyZones/HotKey.swift Sources/MACZONE/*.swift \
+  Sources/MACZONE/*.swift \
   -o "$app_path/Contents/MacOS/MACZONE"
 maczone_signing_identity="${MACZONE_SIGNING_IDENTITY:--}"
 codesign --force --deep --sign "$maczone_signing_identity" --identifier com.appfoundry.maczone "$app_path"
